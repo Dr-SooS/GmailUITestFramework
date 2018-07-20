@@ -1,13 +1,9 @@
-﻿using System;
-using System.Threading;
-using GmailUITestFramework.Browser;
+﻿using GmailUITestFramework.Browser;
 using GmailUITestFramework.Forms;
 using GmailUITestFramework.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 
-namespace GmailUITestFramework
+namespace GmailUITestFramework.Tests
 {
     [TestClass]
     public class GmailSeleniumTests: BaseTest

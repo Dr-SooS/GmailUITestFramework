@@ -35,6 +35,24 @@ namespace GmailUITestFramework.Forms
 
         public HomePage SendMail()
         {
+            new WebDriverWait(Browser.Browser.GetDriver(), TimeSpan.FromSeconds(Browser.Browser.TimeoutForElement))
+                .Until(
+                    condition =>
+                    {
+                        try
+                        {
+                            return new BaseElement(By.CssSelector("div.oL.aDm.az9 span")).GetText() != "";
+                        }
+                        catch (StaleElementReferenceException)
+                        {
+                            return false;
+                        }
+                        catch (NoSuchElementException)
+                        {
+                            return false;
+                        }
+                    });
+
             SubmitButton.GetElement().Click();
             return new HomePage();
         }

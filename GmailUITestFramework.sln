@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GmailUITestFramework", "GmailUITestFramework\GmailUITestFramework.csproj", "{1B1C9024-FF94-44C0-ABBA-7BA3E5DFD809}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDDTests", "BDDTests\BDDTests.csproj", "{8255F0BD-0DB1-4DBF-81CF-11F2447BA590}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1B1C9024-FF94-44C0-ABBA-7BA3E5DFD809}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B1C9024-FF94-44C0-ABBA-7BA3E5DFD809}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B1C9024-FF94-44C0-ABBA-7BA3E5DFD809}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8255F0BD-0DB1-4DBF-81CF-11F2447BA590}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8255F0BD-0DB1-4DBF-81CF-11F2447BA590}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8255F0BD-0DB1-4DBF-81CF-11F2447BA590}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8255F0BD-0DB1-4DBF-81CF-11F2447BA590}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
