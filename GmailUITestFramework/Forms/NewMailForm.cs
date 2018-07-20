@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GmailUITestFramework.Browser;
 using GmailUITestFramework.Models;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace GmailUITestFramework.Forms
 {
@@ -40,10 +41,31 @@ namespace GmailUITestFramework.Forms
 
         public MessageData GetDraftData()
         {
+            new WebDriverWait(Browser.Browser.GetDriver(), TimeSpan.FromSeconds(Browser.Browser.TimeoutForElement))
+                .Until(
+                    condition =>
+                    {
+                        try
+                        {
+                            var text = ((IJavaScriptExecutor) Browser.Browser.GetDriver()).ExecuteScript(
+                                "return arguments[0].value;", TopicField.GetElement()).ToString();
+                            return text != "";
+                        }
+                        catch (StaleElementReferenceException)
+                        {
+                            return false;
+                        }
+                        catch (NoSuchElementException)
+                        {
+                            return false;
+                        }
+                    });
+            var topic = ((IJavaScriptExecutor)Browser.Browser.GetDriver()).ExecuteScript(
+                "return arguments[0].value;", TopicField.GetElement()).ToString();
             return new MessageData()
             {
                 To = new BaseElement(By.CssSelector("div.oL.aDm.az9 span")).GetText(),
-                Topic = TopicField.GetText(),
+                Topic = topic,
                 Message = MessageArea.GetText()
             };
         }

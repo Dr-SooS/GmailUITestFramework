@@ -15,8 +15,8 @@ namespace GmailUITestFramework.Models
         public override bool Equals(object obj)
         {
             var ob1 = (MessageData) obj;
-            return this.To.Equals(ob1.To) && /*this.Topic.Equals(ob1.Topic) &&*/ this.Message.Equals(ob1.Message);
-
+            var t =  this.To == ob1.To && this.Topic == ob1.Topic && this.Message == ob1.Message;
+            return t;
         }
     }
 }

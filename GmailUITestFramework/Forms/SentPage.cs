@@ -15,5 +15,10 @@ namespace GmailUITestFramework.Forms
         //private readonly BaseElement SentLine = new BaseElement(By.XPath("//div[contains(text(), 'Кому:')]"));
 
         public SentPage() : base(SentPageLabel) { }
+
+        public IList<IWebElement> GetMailsList()
+        {
+            return Browser.Browser.GetDriver().FindElements(By.XPath("//td/div[contains(text(), 'Кому: ')][2]"));
+        }
     }
 }

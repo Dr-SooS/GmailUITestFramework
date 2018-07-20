@@ -67,7 +67,7 @@
     <Compile Include="Forms\Loginform.cs" />
     <Compile Include="Forms\NewMailForm.cs" />
     <Compile Include="Forms\SentPage.cs" />
-    <Compile Include="GmailSeleniumTests.cs" />
+    <Compile Include="Tests\GmailSeleniumTests.cs" />
     <Compile Include="Models\MessageData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

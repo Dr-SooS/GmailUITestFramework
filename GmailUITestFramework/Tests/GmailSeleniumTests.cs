@@ -17,24 +17,25 @@ namespace GmailUITestFramework
         {
             var testMessageData = new MessageData
             {
-                To = "testadres@gmail.com",
+                To = "someadresfortest@gmail.com",
                 Topic = "Test Message",
-                Message = "Message Body\nMessage Body\nMessage Body\nMessage Body\nMessage Body\n"
+                Message = "Message Body\r\nMessage Body\r\nMessage Body\r\nMessage Body\r\nMessage Body"
             };
 
             var createdDraftForm = new LoginForm().Login("emailsendingtestuser@gmail.com", "testuserpassword")
                 .OpenNewMessageForm()
                 .CreateDraft(testMessageData.To, testMessageData.Topic, testMessageData.Message)
                 .OpenDrafts()
-                .OpenDraft()
-                .SendMail()
-                .OpenSent();
+                .OpenDraft();
             
+            Assert.AreEqual(testMessageData, createdDraftForm.GetDraftData());
 
-            //var topDraftData = createdDraftForm.GetDraftData();
-            //Assert.AreEqual(testMessageData, topDraftData);
+            var mailsList = createdDraftForm
+                .SendMail()
+                .OpenSent()
+                .GetMailsList();
 
-            //createdDraftForm.SendMail();
+            Assert.IsTrue(mailsList.Count > 0);
 
             Thread.Sleep(5000);
         }
