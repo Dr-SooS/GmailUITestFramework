@@ -36,8 +36,6 @@ namespace GmailUITestFramework
                 .GetMailsList();
 
             Assert.IsTrue(mailsList.Count > 0);
-
-            Thread.Sleep(5000);
         }
     }
 }
