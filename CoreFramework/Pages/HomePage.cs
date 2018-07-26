@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GmailUITestFramework.Browser;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
-namespace GmailUITestFramework.Forms
+namespace CoreFramework.Pages
 {
-    public class HomePage: BaseForm
+    public class HomePage: BasePage
     {
         private static readonly By HomePageLabel = By.CssSelector("div.aKh");
 
@@ -18,10 +12,10 @@ namespace GmailUITestFramework.Forms
 
         public HomePage() : base(HomePageLabel) { }
 
-        public NewMailForm OpenNewMessageForm()
+        public NewMailPage OpenNewMessageForm()
         {
             createMessageButton.GetElement().Click();
-            return (NewMailForm) new NewMailForm().WaitForPageLoaded();
+            return (NewMailPage) new NewMailPage().WaitForPageLoaded();
         }
 
         public DraftsPage OpenDrafts()

@@ -1,6 +1,6 @@
-﻿using GmailUITestFramework.Browser;
-using GmailUITestFramework.Forms;
-using GmailUITestFramework.Models;
+﻿using CoreFramework;
+using CoreFramework.Models;
+using CoreFramework.Pages;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GmailUITestFramework.Tests
@@ -18,7 +18,7 @@ namespace GmailUITestFramework.Tests
                 Message = "Message Body\r\nMessage Body\r\nMessage Body\r\nMessage Body\r\nMessage Body"
             };
 
-            var createdDraftForm = new LoginForm().Login("emailsendingtestuser@gmail.com", "testuserpassword")
+            var createdDraftForm = new LoginPage().Login("emailsendingtestuser@gmail.com", "testuserpassword")
                 .OpenNewMessageForm()
                 .CreateDraft(testMessageData.To, testMessageData.Topic, testMessageData.Message)
                 .OpenDrafts()

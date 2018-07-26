@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace BDDTests.Features
+namespace GmailUITestFramework.Tests.Features
 {
     using TechTalk.SpecFlow;
     
@@ -25,7 +25,7 @@ namespace BDDTests.Features
         
         private Microsoft.VisualStudio.TestTools.UnitTesting.TestContext _testContext;
         
-#line 1 "GmailBDD.feature"
+#line 1 "GmailBdd.feature"
 #line hidden
         
         public virtual Microsoft.VisualStudio.TestTools.UnitTesting.TestContext TestContext
@@ -61,7 +61,7 @@ namespace BDDTests.Features
             if (((testRunner.FeatureContext != null) 
                         && (testRunner.FeatureContext.FeatureInfo.Title != "GmailBDDTests")))
             {
-                global::BDDTests.Features.GmailBDDTestsFeature.FeatureSetup(null);
+                global::GmailUITestFramework.Tests.Features.GmailBDDTestsFeature.FeatureSetup(null);
             }
         }
         

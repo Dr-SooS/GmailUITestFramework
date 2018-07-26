@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GmailUITestFramework.Browser;
+﻿using System.Collections.Generic;
 using OpenQA.Selenium;
 
-namespace GmailUITestFramework.Forms
+namespace CoreFramework.Pages
 {
-    public class SentPage: BaseForm
+    public class SentPage: BasePage
     {
         private static readonly By SentPageLabel = By.XPath("//td/div[contains(text(), 'Кому: ')][2]");
 

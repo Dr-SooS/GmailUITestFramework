@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GmailUITestFramework.Browser;
-using GmailUITestFramework.Models;
+using CoreFramework.Models;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace GmailUITestFramework.Forms
+namespace CoreFramework.Pages
 {
-    public class NewMailForm: BaseForm
+    public class NewMailPage: BasePage
     {
 
         private static readonly By NewMailLabel = By.CssSelector("div.aYF");
@@ -22,7 +17,7 @@ namespace GmailUITestFramework.Forms
         private readonly BaseElement CloseButton = new BaseElement(By.CssSelector("img[aria-label='Сохранить и закрыть']"));
         private readonly BaseElement SubmitButton = new BaseElement(By.XPath("//div[text()='Отправить']"));
 
-        public NewMailForm() : base(NewMailLabel) { }
+        public NewMailPage() : base(NewMailLabel) { }
 
         public HomePage CreateDraft(string to, string topic, string message)
         {

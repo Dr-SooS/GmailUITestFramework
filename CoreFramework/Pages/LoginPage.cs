@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GmailUITestFramework.Browser;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
-namespace GmailUITestFramework.Forms
+namespace CoreFramework.Pages
 {
-    public class LoginForm: BaseForm
+    public class LoginPage: BasePage
     {
         private static readonly By LoginLabel = By.XPath("//content[text()='Sign in']");
 
@@ -17,7 +11,7 @@ namespace GmailUITestFramework.Forms
         private readonly BaseElement passwordInput = new BaseElement(By.XPath("//input[@name='password']"));
         private readonly BaseElement passwordNextButton = new BaseElement(By.Id("passwordNext"));
 
-        public LoginForm(): base(LoginLabel) { }
+        public LoginPage(): base(LoginLabel) { }
 
         public HomePage Login(string email, string password)
         {

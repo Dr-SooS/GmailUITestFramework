@@ -1,12 +1,11 @@
-﻿using System;
-using GmailUITestFramework.Browser;
-using GmailUITestFramework.Forms;
-using GmailUITestFramework.Models;
+﻿using CoreFramework.Browser;
+using CoreFramework.Models;
+using CoreFramework.Pages;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
-namespace BDDTests.StepDefenitions
+namespace GmailUITestFramework.StepDefenitions
 {
     [Binding]
     public class GmailBDDTestsSteps
@@ -31,7 +30,7 @@ namespace BDDTests.StepDefenitions
         [Given(@"I am logged in as ""(.*)"" user and ""(.*)"" password")]
         public void Login(string email, string password)
         {
-            ((LoginForm) new LoginForm().WaitForPageLoaded()).Login(email, password);
+            ((LoginPage) new LoginPage().WaitForPageLoaded()).Login(email, password);
         }
 
         [When(@"I create and save new message draft")]
@@ -54,7 +53,7 @@ namespace BDDTests.StepDefenitions
         [When(@"I send message")]
         public void WhenISendMessage()
         {
-            ((NewMailForm) new NewMailForm().WaitForPageLoaded()).SendMail().OpenSent();
+            ((NewMailPage) new NewMailPage().WaitForPageLoaded()).SendMail().OpenSent();
         }
 
         [Then(@"message should be in sent folder")]

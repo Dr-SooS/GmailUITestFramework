@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 
-namespace GmailUITestFramework.Browser
+namespace CoreFramework.Browser
 {
+    
     public class Browser
     {
         private static Browser _currentInstance;
         private static IWebDriver _driver;
-        public static BrowserFactory.BrowserType CurreBrowser;
+        public static BrowserFactory.BrowserType CurrentBrowser;
         public static int ImplWait;
         public static double TimeoutForElement;
         private static string _browser;
@@ -19,7 +16,7 @@ namespace GmailUITestFramework.Browser
         private Browser()
         {
             InitParams();
-            _driver = BrowserFactory.GetDriver(CurreBrowser, ImplWait);
+            _driver = BrowserFactory.GetDriver(CurrentBrowser, ImplWait);
         }
 
         private static void InitParams()
@@ -27,7 +24,7 @@ namespace GmailUITestFramework.Browser
             ImplWait = Convert.ToInt32(Configuration.ElementTimeout);
             TimeoutForElement = Convert.ToDouble(Configuration.ElementTimeout);
             _browser = Configuration.Browser;
-            Enum.TryParse(_browser, out CurreBrowser);
+            Enum.TryParse(_browser, out CurrentBrowser);
         }
 
         public static Browser Instance => _currentInstance ?? (_currentInstance = new Browser());

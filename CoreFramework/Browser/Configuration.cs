@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 
-namespace GmailUITestFramework.Browser
+namespace CoreFramework.Browser
 {
     public class Configuration
     {
@@ -15,7 +10,7 @@ namespace GmailUITestFramework.Browser
         }
 
         public static string ElementTimeout => GetEnvironmentalVar("ElementTimeout", "30");
-        public static string Browser => GetEnvironmentalVar("Browser", "Chrome");
+        public static string Browser => GetEnvironmentalVar("Browser", "FireFox");
         public static string StartUrl => GetEnvironmentalVar("StartUrl", "https://mail.google.com");
     }
 }

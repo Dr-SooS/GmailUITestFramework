@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace GmailUITestFramework.Browser
+namespace CoreFramework
 {
     public class BaseElement
     {
@@ -38,7 +32,7 @@ namespace GmailUITestFramework.Browser
         {
             try
             {
-                this.Element = Browser.GetDriver().FindElement(this.Locator);
+                this.Element = CoreFramework.Browser.Browser.GetDriver().FindElement(this.Locator);
             }
             catch (Exception e)
             {
@@ -49,11 +43,11 @@ namespace GmailUITestFramework.Browser
 
         public void WaitForElementIsVisible()
         {
-            new WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(Browser.TimeoutForElement)).Until(condition =>
+            new WebDriverWait(CoreFramework.Browser.Browser.GetDriver(), TimeSpan.FromSeconds(CoreFramework.Browser.Browser.TimeoutForElement)).Until(condition =>
             {
                 try
                 {
-                    var elementToBeDisplayed = Browser.GetDriver().FindElement(Locator);
+                    var elementToBeDisplayed = CoreFramework.Browser.Browser.GetDriver().FindElement(Locator);
                     return elementToBeDisplayed.Displayed;
                 }
                 catch (StaleElementReferenceException)
