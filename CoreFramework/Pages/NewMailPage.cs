@@ -1,4 +1,5 @@
 ﻿using System;
+using CoreFramework.Elements;
 using CoreFramework.Models;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -10,21 +11,21 @@ namespace CoreFramework.Pages
 
         private static readonly By NewMailLabel = By.CssSelector("div.aYF");
 
-        private readonly BaseElement ToField = new BaseElement(By.Name("to"));
-        private readonly BaseElement TopicField = new BaseElement(By.Name("subjectbox"));
-        private readonly BaseElement MessageArea = new BaseElement(By.CssSelector("div.Am.Al.editable.LW-avf"));
+        private readonly BaseElement ToField = new ElementWithLogger(new Element(By.Name("to"), "to field"));
+        private readonly BaseElement TopicField = new ElementWithLogger(new Element(By.Name("subjectbox"), "topic field"));
+        private readonly BaseElement MessageArea = new ElementWithLogger(new Element(By.CssSelector("div.Am.Al.editable.LW-avf"), "message field"));
 
-        private readonly BaseElement CloseButton = new BaseElement(By.CssSelector("img[aria-label='Сохранить и закрыть']"));
-        private readonly BaseElement SubmitButton = new BaseElement(By.XPath("//div[text()='Отправить']"));
+        private readonly BaseElement CloseButton = new ElementWithLogger(new Element(By.CssSelector("img[aria-label='Сохранить и закрыть']"), "save draft button"));
+        private readonly BaseElement SubmitButton = new ElementWithLogger(new Element(By.XPath("//div[text()='Отправить']"), "send email button"));
 
-        public NewMailPage() : base(NewMailLabel) { }
+        public NewMailPage() : base(NewMailLabel, "New mail page") { }
 
         public HomePage CreateDraft(string to, string topic, string message)
         {
-            ToField.GetElement().SendKeys(to);
-            TopicField.GetElement().SendKeys(topic);
-            MessageArea.GetElement().SendKeys(message);
-            CloseButton.GetElement().Click();
+            ToField.SendKeys(to);
+            TopicField.SendKeys(topic);
+            MessageArea.SendKeys(message);
+            CloseButton.Click();
             return new HomePage();
         }
 
@@ -36,7 +37,7 @@ namespace CoreFramework.Pages
                     {
                         try
                         {
-                            return new BaseElement(By.CssSelector("div.oL.aDm.az9 span")).GetText() != "";
+                            return new ElementWithLogger(new Element(By.CssSelector("div.oL.aDm.az9 span"), "send mail")).GetText() != "";
                         }
                         catch (StaleElementReferenceException)
                         {
@@ -48,7 +49,7 @@ namespace CoreFramework.Pages
                         }
                     });
 
-            SubmitButton.GetElement().Click();
+            SubmitButton.Click();
             return new HomePage();
         }
 
@@ -77,7 +78,7 @@ namespace CoreFramework.Pages
                 "return arguments[0].value;", TopicField.GetElement()).ToString();
             return new MessageData()
             {
-                To = new BaseElement(By.CssSelector("div.oL.aDm.az9 span")).GetText(),
+                To = new ElementWithLogger(new Element(By.CssSelector("div.oL.aDm.az9 span"), "to field")).GetText(),
                 Topic = topic,
                 Message = MessageArea.GetText()
             };

@@ -6,10 +6,9 @@ namespace CoreFramework.Pages
     public class SentPage: BasePage
     {
         private static readonly By SentPageLabel = By.XPath("//td/div[contains(text(), 'Кому: ')][2]");
+        
 
-        //private readonly BaseElement SentLine = new BaseElement(By.XPath("//div[contains(text(), 'Кому:')]"));
-
-        public SentPage() : base(SentPageLabel) { }
+        public SentPage() : base(SentPageLabel, "sent page") { }
 
         public IList<IWebElement> GetMailsList()
         {

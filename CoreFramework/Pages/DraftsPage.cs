@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using CoreFramework.Elements;
+using OpenQA.Selenium;
 
 namespace CoreFramework.Pages
 {
@@ -6,13 +7,13 @@ namespace CoreFramework.Pages
     {
         private static readonly By DraftsPageLabel = By.XPath("//span[text()='Test Message']");
 
-        private readonly BaseElement DraftLine = new BaseElement(By.XPath("//span[text()='Test Message']"));
+        private readonly BaseElement _draftLine = new ElementWithLogger(new Element(By.XPath("//span[text()='Test Message']"), "Draft page link"));
 
-        public DraftsPage() : base(DraftsPageLabel) { }
+        public DraftsPage() : base(DraftsPageLabel, "Draft Page") { }
 
         public NewMailPage OpenDraft()
         {
-            DraftLine.GetElement().Click();
+            _draftLine.Click();
             return (NewMailPage) new NewMailPage().WaitForPageLoaded();
         }
 

@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using CoreFramework.Elements;
+using OpenQA.Selenium;
 
 namespace CoreFramework.Pages
 {
@@ -6,27 +7,27 @@ namespace CoreFramework.Pages
     {
         private static readonly By HomePageLabel = By.CssSelector("div.aKh");
 
-        private readonly BaseElement createMessageButton = new BaseElement(By.XPath("//div[text()='НАПИСАТЬ']"));
-        private readonly BaseElement openDraftsButton = new BaseElement(By.CssSelector("a[href='https://mail.google.com/mail/u/0/#drafts']"));
-        private readonly BaseElement openSentButton = new BaseElement(By.CssSelector("a[href='https://mail.google.com/mail/u/0/#sent']"));
+        private readonly BaseElement createMessageButton = new ElementWithLogger(new Element(By.XPath("//div[text()='НАПИСАТЬ']"), "create message button"));
+        private readonly BaseElement openDraftsButton = new ElementWithLogger(new Element(By.CssSelector("a[href='https://mail.google.com/mail/u/0/#drafts']"), "open draft button"));
+        private readonly BaseElement openSentButton = new ElementWithLogger(new Element(By.CssSelector("a[href='https://mail.google.com/mail/u/0/#sent']"), "open sent button"));
 
-        public HomePage() : base(HomePageLabel) { }
+        public HomePage() : base(HomePageLabel, "Home Page") { }
 
         public NewMailPage OpenNewMessageForm()
         {
-            createMessageButton.GetElement().Click();
+            createMessageButton.Click();
             return (NewMailPage) new NewMailPage().WaitForPageLoaded();
         }
 
         public DraftsPage OpenDrafts()
         {
-            openDraftsButton.GetElement().Click();
+            openDraftsButton.Click();
             return (DraftsPage) new DraftsPage().WaitForPageLoaded();
         }
 
         public SentPage OpenSent()
         {
-            openSentButton.GetElement().Click();
+            openSentButton.Click();
             return (SentPage) new SentPage().WaitForPageLoaded();
         }
 

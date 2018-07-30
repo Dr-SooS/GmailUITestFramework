@@ -5,7 +5,7 @@ namespace CoreFramework
 {
     public class BaseTest
     {
-        protected static Browser.Browser Browser = CoreFramework.Browser.Browser.Instance; 
+        protected static Browser.Browser Browser = CoreFramework.Browser.Browser.Instance;
 
         [TestInitialize]
         public virtual void InitTest()

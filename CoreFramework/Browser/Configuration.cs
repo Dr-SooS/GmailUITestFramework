@@ -4,7 +4,7 @@ namespace CoreFramework.Browser
 {
     public class Configuration
     {
-        public static string GetEnvironmentalVar(string var, string defaultValue)
+        private static string GetEnvironmentalVar(string var, string defaultValue)
         {
             return ConfigurationManager.AppSettings[var] ?? defaultValue;
         }
