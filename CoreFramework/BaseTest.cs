@@ -1,4 +1,5 @@
 ﻿using CoreFramework.Browser;
+using CoreFramework.Pages;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CoreFramework
@@ -18,6 +19,9 @@ namespace CoreFramework
         [TestCleanup]
         public virtual void CleanTest()
         {
+            //new HomePage().OpenSent().DeleteAll();
+            //new HomePage().OpenTrash().DeleteAll();
+
             CoreFramework.Browser.Browser.Quit();
         }
     }

@@ -1,5 +1,6 @@
 ﻿using CoreFramework.Elements;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 
 namespace CoreFramework.Pages
 {
@@ -10,6 +11,9 @@ namespace CoreFramework.Pages
         private readonly BaseElement createMessageButton = new ElementWithLogger(new Element(By.XPath("//div[text()='НАПИСАТЬ']"), "create message button"));
         private readonly BaseElement openDraftsButton = new ElementWithLogger(new Element(By.CssSelector("a[href='https://mail.google.com/mail/u/0/#drafts']"), "open draft button"));
         private readonly BaseElement openSentButton = new ElementWithLogger(new Element(By.CssSelector("a[href='https://mail.google.com/mail/u/0/#sent']"), "open sent button"));
+
+        private readonly BaseElement moreButton = new ElementWithLogger(new Element(By.CssSelector("span.J-Ke.n4.ah9"), "more button"));
+        private readonly BaseElement openTrashButton = new ElementWithLogger(new Element(By.CssSelector("a[href='https://mail.google.com/mail/u/0/#trash']"), "open trash button"));
 
         public HomePage() : base(HomePageLabel, "Home Page") { }
 
@@ -22,13 +26,22 @@ namespace CoreFramework.Pages
         public DraftsPage OpenDrafts()
         {
             openDraftsButton.Click();
-            return (DraftsPage) new DraftsPage().WaitForPageLoaded();
+            return (DraftsPage) new DraftsPage();
         }
 
         public SentPage OpenSent()
         {
             openSentButton.Click();
             return (SentPage) new SentPage().WaitForPageLoaded();
+        }
+
+        public TrashPage OpenTrash()
+        {
+            ((IJavaScriptExecutor)Browser.Browser.GetDriver()).ExecuteScript("arguments[0].click();", moreButton.GetElement());
+            //new Actions(Browser.Browser.GetDriver()).MoveToElement(moreButton.GetElement()).MoveByOffset(5, 5).Click().Perform();
+            //moreButton.Click();
+            openTrashButton.Click();
+            return (TrashPage) new TrashPage().WaitForPageLoaded();
         }
 
     }

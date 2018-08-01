@@ -17,26 +17,26 @@ namespace CoreFramework.Elements
 
         public override string GetText()
         {
-            this.WaitForElementIsVisible();
-            return this.GetElement().Text;
+            WaitForElementIsVisible();
+            return GetElement().Text;
         }
 
         public override IWebElement GetElement()
         {
             try
             {
-                this.Element = CoreFramework.Browser.Browser.GetDriver().FindElement(this.Locator);
+                Element = Browser.Browser.GetDriver().FindElement(Locator);
             }
             catch (Exception e)
             {
                 throw;
             }
-            return this.Element;
+            return Element;
         }
 
         public override void WaitForElementIsVisible()
         {
-            new WebDriverWait(CoreFramework.Browser.Browser.GetDriver(), TimeSpan.FromSeconds(CoreFramework.Browser.Browser.TimeoutForElement)).Until(condition =>
+            new WebDriverWait(Browser.Browser.GetDriver(), TimeSpan.FromSeconds(Browser.Browser.TimeoutForElement)).Until(condition =>
             {
                 try
                 {

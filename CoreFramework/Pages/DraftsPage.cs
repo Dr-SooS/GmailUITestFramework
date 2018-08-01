@@ -5,11 +5,10 @@ namespace CoreFramework.Pages
 {
     public class DraftsPage: BasePage
     {
-        private static readonly By DraftsPageLabel = By.XPath("//span[text()='Test Message']");
 
         private readonly BaseElement _draftLine = new ElementWithLogger(new Element(By.XPath("//span[text()='Test Message']"), "Draft page link"));
 
-        public DraftsPage() : base(DraftsPageLabel, "Draft Page") { }
+        public DraftsPage() : base("Draft Page") { }
 
         public NewMailPage OpenDraft()
         {

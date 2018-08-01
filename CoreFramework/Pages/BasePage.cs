@@ -9,13 +9,18 @@ namespace CoreFramework.Pages
         protected By IndicatorLocator;
         protected string PageName;
 
-        protected BasePage(By indicatorLocator, string pageName)
+        public BasePage(By indicatorLocator, string pageName)
         {
             IndicatorLocator = indicatorLocator;
             PageName = pageName;
         }
 
-        public BasePage WaitForPageLoaded()
+        public BasePage(string pageName)
+        {
+            PageName = pageName;
+        }
+
+        public virtual BasePage WaitForPageLoaded()
         {
             var label = new ElementWithLogger(new Element(IndicatorLocator, $"{PageName} base element"));
             label.WaitForElementIsVisible();
