@@ -1,4 +1,5 @@
-﻿using CoreFramework.Elements;
+﻿using System;
+using CoreFramework.Elements;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 
@@ -26,13 +27,28 @@ namespace CoreFramework.Pages
         public DraftsPage OpenDrafts()
         {
             openDraftsButton.Click();
-            return (DraftsPage) new DraftsPage();
+            try
+            {
+                return (DraftsPage) new DraftsPage().WaitForPageLoaded(By.XPath("(//font[text()='Черновик'])[2]"));
+            }
+            catch (Exception e)
+            {
+                return (DraftsPage)new DraftsPage().WaitForPageLoaded(By.XPath("//td[contains(text(), 'Нет сохраненных черновиков.')]"));
+            }
         }
 
         public SentPage OpenSent()
         {
             openSentButton.Click();
-            return (SentPage) new SentPage().WaitForPageLoaded();
+            try
+            {
+                return (SentPage)new SentPage().WaitForPageLoaded(By.XPath("//td/div[contains(text(), 'Кому: ')][2]"));
+            }
+            catch (Exception e)
+            {
+                return (SentPage)new SentPage().WaitForPageLoaded(By.XPath("//td[contains(text(), 'Нет отправленных писем. ')]"));
+            }
+            
         }
 
         public TrashPage OpenTrash()
@@ -40,7 +56,8 @@ namespace CoreFramework.Pages
             ((IJavaScriptExecutor)Browser.Browser.GetDriver()).ExecuteScript("arguments[0].click();", moreButton.GetElement());
             //new Actions(Browser.Browser.GetDriver()).MoveToElement(moreButton.GetElement()).MoveByOffset(5, 5).Click().Perform();
             //moreButton.Click();
-            openTrashButton.Click();
+            ((IJavaScriptExecutor)Browser.Browser.GetDriver()).ExecuteScript("arguments[0].click();", openTrashButton.GetElement());
+            //openTrashButton.Click();
             return (TrashPage) new TrashPage().WaitForPageLoaded();
         }
 

@@ -26,5 +26,12 @@ namespace CoreFramework.Pages
             label.WaitForElementIsVisible();
             return this;
         }
+
+        public virtual BasePage WaitForPageLoaded(By locator)
+        {
+            var label = new ElementWithLogger(new Element(locator, $"{PageName} base element"));
+            label.WaitForElementIsVisible();
+            return this;
+        }
     }
 }

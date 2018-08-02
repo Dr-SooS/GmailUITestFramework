@@ -23,23 +23,8 @@ namespace CoreFramework.Pages
         {
         }
 
-        public override BasePage WaitForPageLoaded()
-        {
-            var noSentLabel =
-                new ElementWithLogger(new Element(By.XPath("//td[contains(text(), 'Нет отправленных писем. ')]"), "no sent"));
-            var firstMail =
-                new ElementWithLogger(new Element(By.XPath("//td/div[contains(text(), 'Кому: ')][2]"), "first mail"));
-            try
-            {
-                return new BasePage(By.XPath("//td[contains(text(), 'Нет отправленных писем. ')]"), "sentpage").WaitForPageLoaded();
-                firstMail.WaitForElementIsVisible();
-            }
-            catch (Exception e)
-            {
-                return new BasePage(By.XPath("//td/div[contains(text(), 'Кому: ')][2]"), "sentpage").WaitForPageLoaded();
-                noSentLabel.WaitForElementIsVisible();
-            }
-        }
+        //var noSentLabel = new ElementWithLogger(new Element(By.XPath("//td[contains(text(), 'Нет отправленных писем. ')]"), "no sent"));
+        //var firstMail = new ElementWithLogger(new Element(By.XPath("//td/div[contains(text(), 'Кому: ')][2]"), "first mail"));
 
         public IList<IWebElement> GetMailsList()
         {
