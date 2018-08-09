@@ -81,6 +81,7 @@
     <Compile Include="Pages\NewMailPage.cs" />
     <Compile Include="Pages\SentPage.cs" />
     <Compile Include="Pages\TrashPage.cs" />
+    <Compile Include="Pages\UserCardPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -28,5 +28,7 @@ namespace CoreFramework.Elements
         public abstract void SendKeys(string text);
 
         public abstract void Click();
+
+        public abstract void JsClick();
     }
 }

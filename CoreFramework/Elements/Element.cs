@@ -65,5 +65,11 @@ namespace CoreFramework.Elements
             WaitForElementIsVisible();
             GetElement().Click();
         }
+
+        public override void JsClick()
+        {
+            WaitForElementIsVisible();
+            ((IJavaScriptExecutor)Browser.Browser.GetDriver()).ExecuteScript("arguments[0].click();", GetElement());
+        }
     }
 }

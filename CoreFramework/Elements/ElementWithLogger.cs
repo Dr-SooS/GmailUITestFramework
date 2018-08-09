@@ -47,5 +47,11 @@ namespace CoreFramework.Elements
             Logger.LogInfo($"Click on \"{BaseElement.Name}\"");
             BaseElement.Click();
         }
+
+        public override void JsClick()
+        {
+            Logger.LogInfo($"JS Click on \"{BaseElement.Name}\"");
+            BaseElement.JsClick();
+        }
     }
 }

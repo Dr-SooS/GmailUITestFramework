@@ -16,6 +16,8 @@ namespace CoreFramework.Pages
         private readonly BaseElement moreButton = new ElementWithLogger(new Element(By.CssSelector("span.J-Ke.n4.ah9"), "more button"));
         private readonly BaseElement openTrashButton = new ElementWithLogger(new Element(By.CssSelector("a[href='https://mail.google.com/mail/u/0/#trash']"), "open trash button"));
 
+        private readonly BaseElement openUserDataButton = new ElementWithLogger(new Element(By.XPath("//a[@href='https://accounts.google.com/SignOutOptions?hl=ru&continue=https://mail.google.com/mail&service=mail']"), "open user data button"));
+
         public HomePage() : base(HomePageLabel, "Home Page") { }
 
         public NewMailPage OpenNewMessageForm()
@@ -59,6 +61,12 @@ namespace CoreFramework.Pages
             ((IJavaScriptExecutor)Browser.Browser.GetDriver()).ExecuteScript("arguments[0].click();", openTrashButton.GetElement());
             //openTrashButton.Click();
             return (TrashPage) new TrashPage().WaitForPageLoaded();
+        }
+
+        public UserCardPage OpenUserCard()
+        {
+            openUserDataButton.Click();
+            return (UserCardPage) new UserCardPage().WaitForPageLoaded();
         }
 
     }

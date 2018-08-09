@@ -18,6 +18,8 @@ namespace GmailUITestFramework.Tests
 
         private UserCreds userCreds = new UserCreds
         {
+            FirstName = "Test",
+            LastName = "User",
             Email = "emailsendingtestuser@gmail.com",
             Password = "testuserpassword"
         };
@@ -30,8 +32,6 @@ namespace GmailUITestFramework.Tests
                 .CreateDraft(testMessageData.To, testMessageData.Topic, testMessageData.Message)
                 .OpenDrafts()
                 .OpenDraft();
-
-            var data = createdDraftForm.GetDraftData();
 
             Assert.AreEqual(testMessageData, createdDraftForm.GetDraftData());
 
@@ -58,6 +58,16 @@ namespace GmailUITestFramework.Tests
                 .GetTrashMailsList();
 
             Assert.IsTrue(trashMailsList.Count > 0);
+        }
+
+        [TestMethod]
+        public void UserDataTest()
+        {
+            var userData = new LoginPage().Login(userCreds.Email, userCreds.Password)
+                .OpenUserCard()
+                .GetUserData();
+
+            Assert.AreEqual(userCreds, userData);
         }
     }
 }
