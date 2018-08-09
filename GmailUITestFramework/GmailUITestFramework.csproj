@@ -75,12 +75,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tests\Features\GmailBdd.feature.cs">
+    <Compile Include="StepDefenitions\GmailUserVerificationStepDefinitions.cs" />
+    <Compile Include="Tests\Features\GmailBddMailSending.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GmailBdd.feature</DependentUpon>
+      <DependentUpon>GmailBddMailSending.feature</DependentUpon>
     </Compile>
     <Compile Include="StepDefenitions\GmailBDDTestsSteps.cs" />
+    <Compile Include="Tests\Features\GmailUserVerification.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GmailUserVerification.feature</DependentUpon>
+    </Compile>
     <Compile Include="Tests\GmailSeleniumTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -92,11 +98,15 @@
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Tests\Features\GmailBdd.feature">
+    <None Include="Tests\Features\GmailBddMailSending.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>GmailBdd.feature.cs</LastGenOutput>
+      <LastGenOutput>GmailBddMailSending.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+    <None Include="Tests\Features\GmailUserVerification.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>GmailUserVerification.feature.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="chromedriver.exe">

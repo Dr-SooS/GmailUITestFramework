@@ -12,6 +12,12 @@ namespace GmailUITestFramework.StepDefenitions
     {
         private static Browser Browser = Browser.Instance;
         private MessageData _messageData;
+        private UserCreds _userData;
+
+        public GmailBDDTestsSteps(UserCreds userData)
+        {
+            _userData = userData;
+        }
 
         [BeforeTestRun]
         public static void  Setup()
@@ -24,12 +30,20 @@ namespace GmailUITestFramework.StepDefenitions
         [AfterTestRun]
         public static void Cleanup()
         {
+            new HomePage().OpenSent().DeleteAll();
+            new HomePage().OpenTrash().DeleteAll();
             Browser.Quit();
         }
 
-        [Given(@"I am logged in as ""(.*)"" user and ""(.*)"" password")]
-        public void Login(string email, string password)
+        [Given(@"I am logged in as ""(.*)"" user with ""(.*)"" email and ""(.*)"" password")]
+        public void Login(string name, string email, string password)
         {
+            string[] names = name.Split(' ');
+            _userData.Email = email;
+            _userData.Password = password;
+            _userData.FirstName = names[0];
+            _userData.LastName = names[1];
+
             ((LoginPage) new LoginPage().WaitForPageLoaded()).Login(email, password);
         }
 
@@ -38,29 +52,42 @@ namespace GmailUITestFramework.StepDefenitions
         {
             _messageData = table.CreateInstance<MessageData>();
 
-            ((HomePage) new HomePage().WaitForPageLoaded())
+            new HomePage()
                 .OpenNewMessageForm()
-                .CreateDraft(_messageData.To, _messageData.Topic, _messageData.Message)
-                .OpenDrafts();
+                .CreateDraft(_messageData.To, _messageData.Topic, _messageData.Message);
         }
 
         [When(@"I open draft")]
         public void WhenIOpenDraft()
         {
-            ((DraftsPage) new DraftsPage().WaitForPageLoaded()).OpenDraft();
+            new HomePage().OpenDrafts().OpenDraft();
         }
 
         [When(@"I send message")]
         public void WhenISendMessage()
         {
-            ((NewMailPage) new NewMailPage().WaitForPageLoaded()).SendMail().OpenSent();
+            ((NewMailPage) new NewMailPage().WaitForPageLoaded()).SendMail();
         }
 
         [Then(@"message should be in sent folder")]
         public void ThenMessageShouldBeInSentFolder()
         {
-            var list = ((SentPage) new SentPage().WaitForPageLoaded()).GetMailsList();
+            var list = new HomePage().OpenSent().GetMailsList();
             Assert.IsTrue(list.Count > 0);
         }
+
+        [When(@"I delete sent messages")]
+        public void WhenIDeleteSentMessages()
+        {
+            new HomePage().OpenSent().DeleteAll();
+        }
+
+        [Then(@"message should be in trash folder")]
+        public void ThenMessageShouldBeInTrashFolder()
+        {
+            var list = new HomePage().OpenTrash().GetTrashMailsList();
+            Assert.IsTrue(list.Count > 0);
+        }
+
     }
 }
