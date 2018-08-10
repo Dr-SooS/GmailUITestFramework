@@ -55,11 +55,8 @@ namespace CoreFramework.Pages
 
         public TrashPage OpenTrash()
         {
-            ((IJavaScriptExecutor)Browser.Browser.GetDriver()).ExecuteScript("arguments[0].click();", moreButton.GetElement());
-            //new Actions(Browser.Browser.GetDriver()).MoveToElement(moreButton.GetElement()).MoveByOffset(5, 5).Click().Perform();
-            //moreButton.Click();
-            ((IJavaScriptExecutor)Browser.Browser.GetDriver()).ExecuteScript("arguments[0].click();", openTrashButton.GetElement());
-            //openTrashButton.Click();
+            moreButton.JsClick();
+            openTrashButton.JsClick();
             return (TrashPage) new TrashPage().WaitForPageLoaded();
         }
 

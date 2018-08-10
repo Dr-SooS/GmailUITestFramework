@@ -23,9 +23,6 @@ namespace CoreFramework.Pages
         {
         }
 
-        //var noSentLabel = new ElementWithLogger(new Element(By.XPath("//td[contains(text(), 'Нет отправленных писем. ')]"), "no sent"));
-        //var firstMail = new ElementWithLogger(new Element(By.XPath("//td/div[contains(text(), 'Кому: ')][2]"), "first mail"));
-
         public IList<IWebElement> GetMailsList()
         {
             return Browser.Browser.GetDriver().FindElements(By.XPath("//td/div[contains(text(), 'Кому: ')][2]"));
