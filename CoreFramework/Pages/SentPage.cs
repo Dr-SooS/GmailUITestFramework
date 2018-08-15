@@ -6,6 +6,9 @@ using OpenQA.Selenium.Support.UI;
 
 namespace CoreFramework.Pages
 {
+    /// <summary>
+    /// Pom for sent tab
+    /// </summary>
     public class SentPage : BasePage
     {
         private readonly BaseElement _checkAllSent = new ElementWithLogger(new Element(
@@ -23,11 +26,19 @@ namespace CoreFramework.Pages
         {
         }
 
+        /// <summary>
+        /// Returns list of elements indicating each mail record
+        /// </summary>
+        /// <returns></returns>
         public IList<IWebElement> GetMailsList()
         {
             return Browser.Browser.GetDriver().FindElements(By.XPath("//td/div[contains(text(), 'Кому: ')][2]"));
         }
 
+        /// <summary>
+        /// Deletes all mails to thrash folder
+        /// </summary>
+        /// <returns></returns>
         public HomePage DeleteAll()
         {
             if (GetMailsList().Count > 0)

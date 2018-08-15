@@ -13,6 +13,9 @@ namespace APITests
     {
         public HttpClient Client = new HttpClient();
 
+        /// <summary>
+        /// Verify status code
+        /// </summary>
         [TestMethod]
         public void StatusCodeTest()
         {
@@ -20,6 +23,9 @@ namespace APITests
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
 
+        /// <summary>
+        /// Verify headers
+        /// </summary>
         [TestMethod]
         public void HeaderTest()
         {
@@ -27,6 +33,9 @@ namespace APITests
             Assert.AreEqual("application/json; charset=utf-8", response.Content.Headers.ContentType.ToString());
         }
 
+        /// <summary>
+        /// Verify content
+        /// </summary>
         [TestMethod]
         public void ContentTest()
         {

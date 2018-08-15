@@ -3,6 +3,9 @@ using OpenQA.Selenium;
 
 namespace CoreFramework.Pages
 {
+    /// <summary>
+    /// POM for Login page
+    /// </summary>
     public class LoginPage: BasePage
     {
         private static readonly By LoginLabel = By.XPath("//content[text()='Sign in']");
@@ -14,6 +17,12 @@ namespace CoreFramework.Pages
 
         public LoginPage(): base(LoginLabel, "Login page") { }
 
+        /// <summary>
+        /// Login with creds
+        /// </summary>
+        /// <param name="email">user email</param>
+        /// <param name="password">user password</param>
+        /// <returns>Home page model</returns>
         public HomePage Login(string email, string password)
         {
             emailInput.SendKeys(email);

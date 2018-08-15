@@ -9,6 +9,9 @@ using OpenQA.Selenium;
 
 namespace CoreFramework.Pages
 {
+    /// <summary>
+    /// User card with basic data
+    /// </summary>
     public class UserCardPage: BasePage
     {
         private static readonly By UserCardPageLabel = By.XPath("//a[text()='Добавить аккаунт']");
@@ -23,6 +26,10 @@ namespace CoreFramework.Pages
 
         public UserCardPage() : base(UserCardPageLabel, "User Card") { }
 
+        /// <summary>
+        /// Gets user basic data 
+        /// </summary>
+        /// <returns>User data model</returns>
         public UserCreds GetUserData()
         {
             string[] names = Name.GetText().Split(' ');

@@ -7,6 +7,9 @@ using OpenQA.Selenium;
 
 namespace CoreFramework.Elements
 {
+    /// <summary>
+    /// Decorator with logging for BaseElement
+    /// </summary>
     public class ElementWithLogger: BaseElement
     {
 

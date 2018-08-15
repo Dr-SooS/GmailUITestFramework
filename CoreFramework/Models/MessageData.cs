@@ -1,5 +1,8 @@
 ﻿namespace CoreFramework.Models
 {
+    /// <summary>
+    /// Mail message model
+    /// </summary>
     public class MessageData
     {
         public string To { get; set; }

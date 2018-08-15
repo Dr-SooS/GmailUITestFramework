@@ -7,10 +7,16 @@ using Xamarin.UITest;
 
 namespace MobileTests
 {
+    /// <summary>
+    /// POM for welcome page
+    /// </summary>
     public class WelcomePage
     {
         private string _nextButtonId = "nextView";
 
+        /// <summary>
+        /// Spkipping welcome page
+        /// </summary>
         public void SkipWelcomePage()
         {
             AppDriver.App.Tap(c => c.Id(_nextButtonId));

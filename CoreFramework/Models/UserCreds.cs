@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace CoreFramework.Models
 {
+    /// <summary>
+    /// Basic user data model
+    /// </summary>
     public class UserCreds
     {
         public string FirstName { get; set; }

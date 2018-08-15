@@ -25,6 +25,9 @@ namespace MobileTests
 		    new AppDriver(platform);
 		}
 
+        /// <summary>
+        /// Verify that welcome page displayed
+        /// </summary>
 	    [Test]
 	    public void WelcomeTextIsDisplayed()
 	    {
@@ -32,6 +35,10 @@ namespace MobileTests
             Assert.AreEqual("Добро пожаловать!", title[0].Text);
 	    }
 
+        /// <summary>
+        /// Check search
+        /// </summary>
+        /// <param name="searchProduct"></param>
 	    [Test]
         [TestCase("OnePlus 5T")]
 	    public void CatalogTest(string searchProduct)

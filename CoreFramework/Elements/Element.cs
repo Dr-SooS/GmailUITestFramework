@@ -8,6 +8,9 @@ using OpenQA.Selenium.Support.UI;
 
 namespace CoreFramework.Elements
 {
+    /// <summary>
+    /// Implementation of BaseElement methods
+    /// </summary>
     public class Element: BaseElement
     {
 

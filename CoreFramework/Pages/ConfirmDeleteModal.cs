@@ -8,6 +8,9 @@ using OpenQA.Selenium;
 
 namespace CoreFramework.Pages
 {
+    /// <summary>
+    /// POM for congirm delete dialog modal 
+    /// </summary>
     public class ConfirmDeleteModal: BasePage
     {
 
@@ -17,6 +20,10 @@ namespace CoreFramework.Pages
 
         public ConfirmDeleteModal() : base(ModalLabel, "Confirm delete modal") {}
 
+        /// <summary>
+        /// Confirm deleting by clicking OK on dialog modal
+        /// </summary>
+        /// <returns></returns>
         public HomePage ConfirmDelete()
         {
             _confirmDeleteButton.Click();

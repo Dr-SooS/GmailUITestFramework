@@ -3,6 +3,9 @@ using OpenQA.Selenium;
 
 namespace CoreFramework.Pages
 {
+    /// <summary>
+    /// POM for Drafts tab
+    /// </summary>
     public class DraftsPage: BasePage
     {
 
@@ -10,6 +13,10 @@ namespace CoreFramework.Pages
 
         public DraftsPage() : base("Draft Page") { }
 
+        /// <summary>
+        /// Opens draft to edit
+        /// </summary>
+        /// <returns>POM for mail form</returns>
         public NewMailPage OpenDraft()
         {
             _draftLine.Click();

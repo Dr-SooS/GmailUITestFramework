@@ -5,6 +5,9 @@ using OpenQA.Selenium.Interactions;
 
 namespace CoreFramework.Pages
 {
+    /// <summary>
+    /// Pom for home page
+    /// </summary>
     public class HomePage: BasePage
     {
         private static readonly By HomePageLabel = By.CssSelector("div.aKh");
@@ -26,6 +29,10 @@ namespace CoreFramework.Pages
             return (NewMailPage) new NewMailPage().WaitForPageLoaded();
         }
 
+        /// <summary>
+        /// Opens drafts tab
+        /// </summary>
+        /// <returns></returns>
         public DraftsPage OpenDrafts()
         {
             openDraftsButton.Click();
@@ -39,6 +46,10 @@ namespace CoreFramework.Pages
             }
         }
 
+        /// <summary>
+        /// Opens sent tab
+        /// </summary>
+        /// <returns></returns>
         public SentPage OpenSent()
         {
             openSentButton.Click();
@@ -53,6 +64,10 @@ namespace CoreFramework.Pages
             
         }
 
+        /// <summary>
+        /// Opens trash tab
+        /// </summary>
+        /// <returns></returns>
         public TrashPage OpenTrash()
         {
             moreButton.JsClick();
@@ -60,6 +75,10 @@ namespace CoreFramework.Pages
             return (TrashPage) new TrashPage().WaitForPageLoaded();
         }
 
+        /// <summary>
+        /// Opens user card
+        /// </summary>
+        /// <returns></returns>
         public UserCardPage OpenUserCard()
         {
             openUserDataButton.Click();

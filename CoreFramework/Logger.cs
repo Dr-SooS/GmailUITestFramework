@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace CoreFramework
 {
+    /// <summary>
+    /// NLog.Logger singleton wrapper 
+    /// </summary>
     public class Logger
     {
         
@@ -16,17 +19,28 @@ namespace CoreFramework
             _logger = NLog.LogManager.GetLogger("GmailtestProgectLogger");
         }
         
-
+        /// <summary>
+        /// Returns current instance of logger
+        /// </summary>
+        /// <returns></returns>
         private static NLog.Logger GetLogger()
         {
             return _logger ?? (_logger = NLog.LogManager.GetCurrentClassLogger());
         }
 
+        /// <summary>
+        /// Logs info message
+        /// </summary>
+        /// <param name="message"></param>
         public static void LogInfo(string message)
         {
             GetLogger().Info(message);
         }
 
+        /// <summary>
+        /// Logs error message
+        /// </summary>
+        /// <param name="message"></param>
         public static void LogError(string message)
         {
             GetLogger().Error(message);

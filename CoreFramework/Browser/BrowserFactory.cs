@@ -5,6 +5,9 @@ using OpenQA.Selenium.Firefox;
 
 namespace CoreFramework.Browser
 {
+    /// <summary>
+    /// Browser factory
+    /// </summary>
     public class BrowserFactory
     {
         public enum BrowserType
@@ -13,6 +16,12 @@ namespace CoreFramework.Browser
             FireFox
         }
 
+        /// <summary>
+        /// Setup IWebDriver
+        /// </summary>
+        /// <param name="type">Type of browser e.g. Chrome, FireFox</param>
+        /// <param name="timeOutSec">Default browser timeout</param>
+        /// <returns></returns>
         public static IWebDriver GetDriver(BrowserType type, int timeOutSec)
         {
             IWebDriver driver = null;

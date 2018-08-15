@@ -10,6 +10,9 @@ using OpenQA.Selenium.Interactions;
 
 namespace CoreFramework.Pages
 {
+    /// <summary>
+    /// POM for trash tab
+    /// </summary>
     public class TrashPage: BasePage
     {
 
@@ -20,11 +23,19 @@ namespace CoreFramework.Pages
 
         public TrashPage() : base(TrashPageLabel, "Trash page") {}
 
+        /// <summary>
+        /// Returns list of elements indicating each mail record
+        /// </summary>
+        /// <returns></returns>
         public IList<IWebElement> GetTrashMailsList()
         {
             return Browser.Browser.GetDriver().FindElements(By.CssSelector("td.aqM.xY"));
         }
 
+        /// <summary>
+        /// Deletes all mails from trash folder
+        /// </summary>
+        /// <returns></returns>
         public HomePage DeleteAll()
         {
             if (GetTrashMailsList().Count > 0)

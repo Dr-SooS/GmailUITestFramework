@@ -3,7 +3,9 @@ using OpenQA.Selenium;
 
 namespace CoreFramework.Browser
 {
-    
+    /// <summary>
+    /// Browser singleton wrapper 
+    /// </summary>
     public class Browser
     {
         private static Browser _currentInstance;
@@ -27,23 +29,41 @@ namespace CoreFramework.Browser
             Enum.TryParse(_browser, out CurrentBrowser);
         }
 
+        /// <summary>
+        /// Returns current instance 
+        /// </summary>
         public static Browser Instance => _currentInstance ?? (_currentInstance = new Browser());
 
+        /// <summary>
+        /// Maximize browser window
+        /// </summary>
         public static void WindowMaximize()
         {
             _driver.Manage().Window.Maximize();
         }
 
+        /// <summary>
+        /// Nvaigates to Url
+        /// </summary>
+        /// <param name="url">Url to navigate</param>
         public static void NamvigateTo(string url)
         {
             _driver.Navigate().GoToUrl(url);
         }
 
+        /// <summary>
+        /// Returns IWebDriver instance
+        /// </summary>
+        /// <returns></returns>
         public static IWebDriver GetDriver()
         {
             return _driver;
         }
 
+
+        /// <summary>
+        /// Closes the browser and cleanup
+        /// </summary>
         public static void Quit()
         {
             _driver.Quit();

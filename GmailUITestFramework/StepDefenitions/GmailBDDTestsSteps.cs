@@ -19,7 +19,7 @@ namespace GmailUITestFramework.StepDefenitions
             _userData = userData;
         }
 
-        [BeforeTestRun]
+        [Before]
         public static void  Setup()
         {
             Browser = Browser.Instance;
@@ -27,7 +27,7 @@ namespace GmailUITestFramework.StepDefenitions
             Browser.NamvigateTo(Configuration.StartUrl);
         }
 
-        [AfterTestRun]
+        [After]
         public static void Cleanup()
         {
             new HomePage().OpenSent().DeleteAll();

@@ -6,6 +6,9 @@ using OpenQA.Selenium.Support.UI;
 
 namespace CoreFramework.Pages
 {
+    /// <summary>
+    /// POM for mail creating form
+    /// </summary>
     public class NewMailPage: BasePage
     {
 
@@ -20,6 +23,14 @@ namespace CoreFramework.Pages
 
         public NewMailPage() : base(NewMailLabel, "New mail page") { }
 
+
+        /// <summary>
+        /// Fills form fields with data
+        /// </summary>
+        /// <param name="to">Send to parameter</param>
+        /// <param name="topic"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public HomePage CreateDraft(string to, string topic, string message)
         {
             ToField.SendKeys(to);
@@ -29,6 +40,10 @@ namespace CoreFramework.Pages
             return new HomePage();
         }
 
+        /// <summary>
+        /// Confirms sending email
+        /// </summary>
+        /// <returns></returns>
         public HomePage SendMail()
         {
             new WebDriverWait(Browser.Browser.GetDriver(), TimeSpan.FromSeconds(Browser.Browser.TimeoutForElement))
@@ -53,6 +68,10 @@ namespace CoreFramework.Pages
             return new HomePage();
         }
 
+        /// <summary>
+        /// Gets values of form fields
+        /// </summary>
+        /// <returns>Message model</returns>
         public MessageData GetDraftData()
         {
             new WebDriverWait(Browser.Browser.GetDriver(), TimeSpan.FromSeconds(Browser.Browser.TimeoutForElement))

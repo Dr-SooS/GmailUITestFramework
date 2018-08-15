@@ -7,6 +7,9 @@ using Xamarin.UITest;
 
 namespace MobileTests
 {
+    /// <summary>
+    /// Singleton instance for app driver
+    /// </summary>
     public class AppDriver
     {
         private static IApp _app;

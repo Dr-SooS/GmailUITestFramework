@@ -24,6 +24,9 @@ namespace GmailUITestFramework.Tests
             Password = "testuserpassword"
         };
 
+        /// <summary>
+        /// Send email and verify that it's in sent folder
+        /// </summary>
         [TestMethod]
         public void EmailSendingTest()
         {
@@ -43,6 +46,9 @@ namespace GmailUITestFramework.Tests
             Assert.IsTrue(mailsList.Count > 0);
         }
 
+        /// <summary>
+        /// Send and delete email and verify that it's in trash folder
+        /// </summary>
         [TestMethod]
         public void EmailDeleetingTest()
         {
@@ -60,6 +66,9 @@ namespace GmailUITestFramework.Tests
             Assert.IsTrue(trashMailsList.Count > 0);
         }
 
+        /// <summary>
+        /// Verify displayed user data on user card
+        /// </summary>
         [TestMethod]
         public void UserDataTest()
         {
